@@ -15,8 +15,12 @@ public class Docente extends Persona {
     }
 
     @Override
+    public double calcularBeneficioAnual() {
+        return aniosExperiencia * 45.0;
+    }
+
+    @Override
     public String toString() {
         return presentarse() + " | " + especialidad + " (" + aniosExperiencia + " años)";
     }
 }
-

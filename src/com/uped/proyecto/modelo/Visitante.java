@@ -6,6 +6,11 @@ public class Visitante extends Persona {
     }
 
     @Override
+    public double calcularBeneficioAnual() {
+        return 0.0;
+    }
+
+    @Override
     public String toString() {
         return "Visitante {" + presentarse() + "}";
     }
