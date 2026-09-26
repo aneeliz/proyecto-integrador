@@ -1,4 +1,4 @@
-# Diagrama de Clases - Semana 6 (Clases Abstractas)
+# Diagrama de Clases - Semana 7 (Herencia Multinivel)
 
 ```mermaid
 classDiagram
@@ -27,6 +27,13 @@ class Empleado {
 +calcularBeneficioAnual() double
 }
 
+class Gerente {
+-int tamanoEquipo
++getTamanoEquipo() int
++calcularBeneficioAnual() double
++toString() String
+}
+
 class Estudiante {
 -String carnet
 -String carrera
@@ -40,6 +47,13 @@ class Docente {
 -String especialidad
 -int aniosExperiencia
 +impartirClase(String materia) void
++calcularBeneficioAnual() double
++toString() String
+}
+
+class DocenteInvestigador {
+-int numeroPublicaciones
++getNumeroPublicaciones() int
 +calcularBeneficioAnual() double
 +toString() String
 }
@@ -68,3 +82,6 @@ Persona <|-- Docente
 Persona <|-- Voluntario
 Persona <|-- Proveedor
 Persona <|-- Visitante
+
+Empleado <|-- Gerente
+Docente <|-- DocenteInvestigador
