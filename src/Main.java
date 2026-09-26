@@ -1,39 +1,30 @@
-package com.uped.proyecto;
-
 import com.uped.proyecto.modelo.Cliente;
 import com.uped.proyecto.modelo.Docente;
 import com.uped.proyecto.modelo.Empleado;
 import com.uped.proyecto.modelo.Estudiante;
 import com.uped.proyecto.modelo.Persona;
-import com.uped.proyecto.modelo.Visitante;
+import com.uped.proyecto.modelo.Proveedor;
+import com.uped.proyecto.modelo.Voluntario;
 
 public class Main {
-public static void main(String[] args) {
-Cliente cliente = new Cliente("Ana López", "04512378-9", "7777-1234");
-System.out.println(cliente.presentarse());
+    public static void main(String[] args) {
+        Persona[] personas = {
+                new Cliente("Ana", "0451...", "7777-1", 4000.0),
+                new Empleado("Luis", "0622...", 850.0),
+                new Estudiante("Kevin", "0399...", "UPED-045", "Ing. Sistemas", 9.1),
+                new Docente("María", "0598...", "Software", 8)
+        };
 
-Visitante v = new Visitante("Kevin");
-System.out.println(v);
+        for (Persona p : personas) {
+            System.out.println(p.presentarse() + " -> $" + p.calcularBeneficioAnual());
+        }
 
-Empleado empleado = new Empleado("Luis Pérez", "06223456-1", 850.0);
-System.out.println(empleado.presentarse());
-empleado.actualizarNombre("Luis Pérez Martínez");
-System.out.println(empleado.presentarse());
+        Voluntario v = new Voluntario("Sara Gómez", "07456123-2", 120.0);
+        System.out.println(v);
+        System.out.println("Beneficio: " + v.calcularBeneficioAnual());
 
-Persona[] personas = {
-new Cliente("Ana", "0451...", "7777-1"),
-new Empleado("Luis", "0622...", 850.0)
-};
-for (Persona p : personas) {
-System.out.println(p.presentarse());
-}
-
-Estudiante e = new Estudiante("Carlos Ramírez", "06123456-7", "UPED-2026-045", "Ing. en Sistemas");
-System.out.println(e);
-e.matricular("Programación III");
-
-Docente docente = new Docente("María Hernández", "05987654-3", "Ingeniería de Software", 8);
-System.out.println(docente);
-docente.impartirClase("Programación III");
-}
+        Proveedor prov = new Proveedor("Comercial Ríos", "06554321-8", 8000.0);
+        System.out.println(prov);
+        System.out.println("Beneficio: " + prov.calcularBeneficioAnual());
+    }
 }
