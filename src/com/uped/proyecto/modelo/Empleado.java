@@ -1,36 +1,18 @@
 package com.uped.proyecto.modelo;
 
-import java.time.LocalDate;
+public class Empleado extends Persona {
+    private double salario;
 
-public class Empleado {
-    private final String dui;
-    private final LocalDate fechaIngreso;
-    private String cargo;
-
-    public Empleado(String dui, String cargo) {
-        this.dui = dui;
-        this.fechaIngreso = LocalDate.now();
-        this.cargo = cargo;
+    public Empleado(String nombre, String dui, double salario) {
+        super(nombre, dui);
+        this.salario = salario;
     }
 
-    public void ascender(String nuevoCargo) {
-        this.cargo = nuevoCargo;
+    public void actualizarNombre(String nuevoNombre) {
+        this.nombre = nuevoNombre;
     }
 
-    public String getDui() {
-        return dui;
-    }
-
-    public LocalDate getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    @Override
-    public String toString() {
-        return "Empleado{dui='" + dui + "', cargo='" + cargo + "'}";
+    public double getSalario() {
+        return salario;
     }
 }
