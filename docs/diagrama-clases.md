@@ -1,32 +1,29 @@
-# Diagrama de Clases - Semana 8 (Diseño de Clases Abstractas - Módulo Transporte)
+# Diagrama de Clases - Semana 9 (Polimorfismo - Módulo Música)
 
 ```mermaid
 classDiagram
-class Vehiculo {
+class Instrumento {
 <<abstract>>
-#String placa
-#double kilometrosRecorridos
-+calcularCostoPeaje()* double
-+mostrarFicha() void
+#String tipo
++tocar()* void
++identificar()$ String
++mostrarTipo() void
 }
 
-class Automovil {
--double TARIFA_KM
-+calcularCostoPeaje() double
+class Guitarra {
+#String tipo
++tocar() void
++identificar()$ String
 }
 
-class Motocicleta {
--double TARIFA_KM
-+calcularCostoPeaje() double
+class Piano {
++tocar() void
 }
 
-class CamionDeCarga {
--double TARIFA_KM
--double RECARGO_FIJO
-+calcularCostoPeaje() double
+class Bateria {
++tocar() void
 }
 
-Vehiculo <|-- Automovil
-Vehiculo <|-- Motocicleta
-Vehiculo <|-- CamionDeCarga
-```
+Instrumento <|-- Guitarra
+Instrumento <|-- Piano
+Instrumento <|-- Bateria
