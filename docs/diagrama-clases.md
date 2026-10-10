@@ -1,37 +1,56 @@
-# Diagrama de Clases - Semana 10 (Polimorfismo: Sobrecarga y Sobrescritura)
+# Diagrama de Clases - Semana 11 (Interfaces y Polimorfismo)
 
 ```mermaid
 classDiagram
-class Notificacion {
-<<abstract>>
-#String destinatario
-#String mensaje
-+enviar()* void
-+enviar(int veces) void
-+getDestinatario() String
+class Exportable {
+<<interface>>
++MAX_CAMPOS$ int
++exportar()* String
++exportarConFecha(fecha) String
++version()$ String
 }
 
-class NotificacionEmail {
-+enviar() void
+class Imprimible {
+<<interface>>
++imprimir()* void
 }
 
-class NotificacionSMS {
-+enviar() void
+class Auditable {
+<<interface>>
++usuario()* String
 }
 
-class NotificacionPush {
--int prioridad
-+enviar() void
+class Producto {
+-String nombre
+-int precio
++exportar() String
 }
 
-class GestorNotificaciones {
-+notificar(Notificacion n) void
-+notificar(Notificacion n, int intentos) void
-+notificar(Notificacion n, boolean urgente) void
-+notificar(String destinatario, String mensaje) void
+class Factura {
+-int numero
+-int total
++exportar() String
++imprimir() void
 }
 
-Notificacion <|-- NotificacionEmail
-Notificacion <|-- NotificacionSMS
-Notificacion <|-- NotificacionPush
-GestorNotificaciones ..> Notificacion : gestiona
+class ReporteVentas {
+-String mes
+-int unidades
++exportar() String
++imprimir() void
+}
+
+class FacturaAuditada {
+-String usuario
++usuario() String
+}
+
+Exportable <|.. Producto : implements
+Exportable <|.. Factura : implements
+Imprimible <|.. Factura : implements
+Exportable <|.. ReporteVentas : implements
+Imprimible <|.. ReporteVentas : implements
+
+Exportable <|-- Auditable : extends
+Factura <|-- FacturaAuditada : extends
+Auditable <|.. FacturaAuditada : implements
