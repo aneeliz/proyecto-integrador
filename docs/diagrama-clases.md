@@ -1,29 +1,37 @@
-# Diagrama de Clases - Semana 9 (Polimorfismo - Módulo Música)
+# Diagrama de Clases - Semana 10 (Polimorfismo: Sobrecarga y Sobrescritura)
 
 ```mermaid
 classDiagram
-class Instrumento {
+class Notificacion {
 <<abstract>>
-#String tipo
-+tocar()* void
-+identificar()$ String
-+mostrarTipo() void
+#String destinatario
+#String mensaje
++enviar()* void
++enviar(int veces) void
++getDestinatario() String
 }
 
-class Guitarra {
-#String tipo
-+tocar() void
-+identificar()$ String
+class NotificacionEmail {
++enviar() void
 }
 
-class Piano {
-+tocar() void
+class NotificacionSMS {
++enviar() void
 }
 
-class Bateria {
-+tocar() void
+class NotificacionPush {
+-int prioridad
++enviar() void
 }
 
-Instrumento <|-- Guitarra
-Instrumento <|-- Piano
-Instrumento <|-- Bateria
+class GestorNotificaciones {
++notificar(Notificacion n) void
++notificar(Notificacion n, int intentos) void
++notificar(Notificacion n, boolean urgente) void
++notificar(String destinatario, String mensaje) void
+}
+
+Notificacion <|-- NotificacionEmail
+Notificacion <|-- NotificacionSMS
+Notificacion <|-- NotificacionPush
+GestorNotificaciones ..> Notificacion : gestiona
